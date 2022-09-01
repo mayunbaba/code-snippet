@@ -1,0 +1,23 @@
+{
+  "name": "code-snippet",
+  "version": "1.0.0",
+  "description": "[前端面试题汇总](https://www.yuque.com/shayulajiao-0f9nr/tzv72i) 对应的代码片段",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mayunbaba/code-snippet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mayunbaba/code-snippet/issues"
+  },
+  "homepage": "https://github.com/mayunbaba/code-snippet#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
