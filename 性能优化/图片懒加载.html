@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图片懒加载</title>
+    <style>
+      .lozy-img {
+        display: block;
+        width: 100%;
+        height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><img class="lozy-img" data-src="https://picsum.photos/210" /></li>
+      <li><img class="lozy-img" data-src="https://picsum.photos/220" /></li>
+      <li><img class="lozy-img" data-src="https://picsum.photos/230" /></li>
+      <li><img class="lozy-img" data-src="https://picsum.photos/240" /></li>
+      <li><img class="lozy-img" data-src="https://picsum.photos/250" /></li>
+      <li><img class="lozy-img" data-src="https://picsum.photos/260" /></li>
+    </ul>
+    <script type="module">
+      const imgs = document.querySelectorAll(".lozy-img");
+      // http://t.zoukankan.com/guojiabing-p-11773277.html IntersectionObserver 介绍
+      const io = new IntersectionObserver(ioCallback);
+      imgs.forEach((item) => io.observe(item));
+
+      function ioCallback(entries, observer) {
+        entries.forEach((entrie) => {
+          const {
+            time,
+            target, // 被观察的目标元素，是一个 DOM节点对象
+            rootBound,
+            boundingClientRect,
+            intersectionRect,
+            intersectionRatio, // 目标元素的可见比例
+          } = entrie;
+          console.log(target, intersectionRatio, "change");
+          if (intersectionRatio > 0) {
+            showImg(target)
+            observer.unobserve(target)
+          }
+        });
+        console.log(observer, "观察者实例等于io");
+      }
+
+      function showImg(target) {
+        target.src = target.getAttribute('data-src')
+      }
+    </script>
+  </body>
+</html>
