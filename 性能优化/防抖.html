@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>防抖</title>
   </head>
   <body>
-    <button onclick="debounceSay('hello word!')">你好啊</button>
+    <button onclick="debounceSay('hello word!', '你好啊')">你好啊</button>
     <script src="../node_modules/lodash/lodash.js"></script>
     <script>
       // 防抖
@@ -20,7 +20,8 @@
             timer = null
           }
           timer = setTimeout(() => {
-            fn(...args)
+            fn.apply(this, args)
+            // fn(...args)
           }, wait);
         };
       };
@@ -30,6 +31,7 @@
       };
 
       const debounceSay = debounce(say, 1000);
+      window.onresize = () => debounceSay('scroll')
     </script>
   </body>
 </html>
