@@ -9,7 +9,7 @@
 <body>
   <script>
     const throttleLog = throttle(log, 500)
-    window.onresize = () => throttleLog('scroll')
+    window.onresize = () => throttleLog('resize')
     // 时间节流函数
     // function throttle(fn, delay) {
     //   let preTime = Date.now()
@@ -37,13 +37,13 @@
 
     // requestAnimationFrame
     function throttle(fn, delay) {
-      let scheduledanimationframe = false
+      let scheduleAnimationFrame = false
       return (...args) => {
-        if (!scheduledanimationframe) {
-          scheduledanimationframe = true
+        if (!scheduleAnimationFrame) {
+          scheduleAnimationFrame = true
           requestAnimationFrame(() => {
             fn(...args)
-            scheduledanimationframe = false
+            scheduleAnimationFrame = false
           })
         }
       }
